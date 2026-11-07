@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ruko: tu entrenamiento y tu comida, en un solo lugar</title>
+<meta name="description" content="Ruko es una app gratis para organizar tu rutina, estimar tus calorías y macros, y ver si estás levantando más peso semana a semana.">
+<meta name="theme-color" content="#0e0f11">
+<meta property="og:title" content="Ruko: ¿estás progresando o solo vas al gym?">
+<meta property="og:description" content="Organizá tu rutina, tu comida y tus cargas en una sola app gratis.">
+<meta property="og:image" content="img/progreso.jpg">
+<link rel="icon" href="img/icono.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0e0f11; --panel:#1c1f24; --line:#2c3036; --text:#f5f6f3; --muted:#a2a8b0; --neon:#a3ff12; --ink:#0e0f11; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--text); font:400 17px/1.55 Outfit,system-ui,sans-serif; overflow-x:hidden; }
+  a { color:inherit; }
+  img { display:block; max-width:100%; height:auto; }
+  .wrap { width:min(1080px,100%); margin:0 auto; padding:0 20px; }
+  header.wrap { display:flex; align-items:center; justify-content:space-between; padding-top:20px; padding-bottom:20px; }
+  .logo { color:var(--neon); font-weight:900; font-size:26px; letter-spacing:-.02em; text-decoration:none; }
+  .link { color:var(--muted); font-weight:500; font-size:15px; text-decoration:none; }
+  .link:hover { color:var(--text); }
+
+  .wrap.hero { display:grid; gap:36px; padding-top:24px; padding-bottom:64px; }
+  h1 { font-size:clamp(42px,12vw,76px); line-height:1; font-weight:900; letter-spacing:-.035em; margin:0 0 20px; }
+  h1 em { font-style:normal; color:var(--neon); }
+  .lead { font-size:clamp(18px,4.6vw,21px); color:#cfd3d8; margin:0 0 26px; max-width:32em; }
+  .btn { display:inline-block; background:var(--neon); color:var(--ink); border:0; border-radius:14px; padding:15px 26px; font:700 17px Outfit,system-ui,sans-serif; text-decoration:none; cursor:pointer; }
+  .btn:hover { background:#b8ff2e; }
+  .btn:focus-visible, input:focus-visible, a:focus-visible { outline:3px solid #fff; outline-offset:2px; }
+  .nota { color:var(--muted); font-size:14px; margin:12px 0 0; }
+
+  .tel { width:min(300px,78vw); margin:0 auto; border-radius:34px; border:7px solid #2a2d33; overflow:hidden; background:#000; }
+  .hero .tel { transform:rotate(2deg); }
+  .ejemplo { color:var(--muted); font-size:13px; text-align:center; margin:12px 0 0; }
+
+  section.wrap { padding-top:60px; padding-bottom:60px; border-top:1px solid var(--line); }
+  h2 { font-size:clamp(32px,8vw,48px); line-height:1.05; font-weight:900; letter-spacing:-.025em; margin:0 0 14px; }
+  .fila { display:grid; gap:32px; align-items:center; }
+  .fila p { color:#cfd3d8; margin:0; max-width:30em; }
+  .num { color:var(--neon); font-weight:700; font-size:15px; margin:0 0 10px; }
+
+  .historia { max-width:40em; }
+  .historia p { color:#cfd3d8; }
+
+  form { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; max-width:520px; }
+  input[type=email] { flex:1 1 220px; min-width:0; background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:14px; padding:15px 16px; font:400 17px Outfit,system-ui,sans-serif; }
+  input[type=email]::placeholder { color:#8a9099; }
+  #estado { flex-basis:100%; min-height:1.5em; margin:0; font-size:15px; }
+  #estado.ok { color:var(--neon); } #estado.error { color:#ff8d8d; }
+
+  dl { margin:0; display:grid; gap:22px; max-width:42em; }
+  dt { font-weight:700; }
+  dd { margin:4px 0 0; color:#cfd3d8; }
+
+  footer.wrap { border-top:1px solid var(--line); padding-top:28px; padding-bottom:40px; color:var(--muted); font-size:14px; }
+  footer p { margin:0 0 8px; max-width:46em; }
+
+  @media (min-width:820px) {
+    .wrap.hero { grid-template-columns:1.2fr .8fr; align-items:center; padding-top:48px; }
+    .fila { grid-template-columns:1fr 1fr; gap:64px; }
+    .fila.inv > :first-child { order:2; }
+  }
+  @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .hero .tel { transform:none; } }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <a class="logo" href="#">RUKO</a>
+  <a class="link" data-app href="https://app-ruko.onrender.com/">Iniciar sesión</a>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1>¿Estás progresando o solo <em>vas al gym?</em></h1>
+      <p class="lead">Anotá cuánto levantás y seguí cada ejercicio en un gráfico. Ruko junta tu rutina, tu comida y tus cargas para que veas si lo que hacés está funcionando.</p>
+      <a class="btn" data-app href="https://app-ruko.onrender.com/">Empezar gratis</a>
+      <p class="nota">Funciona desde el navegador. La primera carga puede tardar unos segundos.</p>
+    </div>
+    <div>
+      <div class="tel"><img src="img/progreso.jpg" width="563" height="1218" alt="Pantalla de progreso de Ruko: un gráfico muestra el press de banca subiendo de 40 a 55 kilos, con una mejora de 15 kilos."></div>
+      <p class="ejemplo">Datos de ejemplo</p>
+    </div>
+  </div>
+
+  <section class="wrap fila">
+    <div>
+      <p class="num">Entrenar</p>
+      <h2>Llegá al gym sabiendo qué te toca</h2>
+      <p>Armá tus días, sumá ejercicios desde la base de datos y marcá tu asistencia. Si faltaste, se ve; si venís constante, también.</p>
+    </div>
+    <div class="tel"><img src="img/rutina.jpg" width="563" height="1218" loading="lazy" alt="Pantalla de rutina de Ruko con el día de hoy, el avance semanal y un calendario de asistencia."></div>
+  </section>
+
+  <section class="wrap fila inv">
+    <div>
+      <p class="num">Comer</p>
+      <h2>Mirá cuánto comés, no cuánto creés</h2>
+      <p>Ruko estima tus calorías y macros según tus datos, tu actividad y tu objetivo. Buscás lo que comiste, incluidos alfajor y asado, y ves cómo vas en el día.</p>
+    </div>
+    <div class="tel"><img src="img/consumo.jpg" width="563" height="1218" loading="lazy" alt="Registro de comidas de Ruko: un anillo marca 1073 de 2974 calorías, con proteínas, carbohidratos y grasas del día."></div>
+  </section>
+
+  <section class="wrap fila">
+    <div>
+      <p class="num">Estimar</p>
+      <h2>Empezá con un número, no con una dieta de internet</h2>
+      <p>Cargá tu peso, altura, edad, sexo y actividad, elegí tu objetivo y obtené una meta orientativa de calorías y macros. Es una estimación para empezar, no una indicación médica.</p>
+    </div>
+    <div class="tel"><img src="img/calculadora.jpg" width="563" height="1218" loading="lazy" alt="Calculadora nutricional de Ruko con sexo, nivel de actividad, objetivo y una meta diaria estimada de 2974 calorías."></div>
+  </section>
+
+  <section class="wrap historia">
+    <h2>La está haciendo un estudiante</h2>
+    <p>Ruko nace en La Plata. La desarrolla Pedro, estudiante de Ingeniería Electrónica. Todavía está en desarrollo y no está en las tiendas, así que tu opinión puede cambiar lo que viene.</p>
+  </section>
+
+  <section class="wrap" id="novedades">
+    <h2>Enterate cuando salga en las tiendas</h2>
+    <p>Dejá tu email y te avisamos. Solo lo usamos para novedades de Ruko.</p>
+    <form id="form" novalidate>
+      <label for="email" style="position:absolute;left:-9999px">Tu email</label>
+      <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" required>
+      <button class="btn" type="submit">Avisame</button>
+      <p id="estado" role="status" aria-live="polite"></p>
+    </form>
+    <p class="nota">Al enviarlo aceptás la <a href="privacidad.html">política de privacidad</a>.</p>
+  </section>
+
+  <section class="wrap">
+    <h2>Preguntas</h2>
+    <dl>
+      <div><dt>¿Es gratis?</dt><dd>Sí, por ahora Ruko es gratis. Si más adelante sumamos funciones pagas, lo vamos a avisar antes.</dd></div>
+      <div><dt>¿Tengo que descargar algo?</dt><dd>No. Se abre desde el navegador y podés agregarla a la pantalla de inicio de tu celular.</dd></div>
+      <div><dt>¿Sirve si recién empiezo?</dt><dd>Sí. Podés armar una rutina simple y sumar registros a medida que te acostumbrás.</dd></div>
+      <div><dt>¿Reemplaza a un profesional?</dt><dd>No. Los cálculos son estimaciones generales. Si tenés una condición de salud, estás embarazada o tenés o tuviste problemas con la comida, consultá con un profesional.</dd></div>
+    </dl>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p>Ruko ofrece información general y no brinda asesoramiento médico ni nutricional.</p>
+  <p><a href="privacidad.html">Política de privacidad</a></p>
+</footer>
+
+<script>
+  var local = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+  var APP = local ? 'http://localhost:3199' : 'https://app-ruko.onrender.com';
+  var fuente = new URLSearchParams(location.search).get('src') || 'landing';
+  document.querySelectorAll('[data-app]').forEach(function (a) { a.href = APP + '/'; });
+
+  var form = document.getElementById('form');
+  var estado = document.getElementById('estado');
+  var mostrar = function (texto, clase) { estado.textContent = texto; estado.className = clase; };
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = form.email.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { mostrar('Revisá el email.', 'error'); form.email.focus(); return; }
+    var boton = form.querySelector('button');
+    boton.disabled = true;
+    mostrar('Enviando… si el servidor estaba inactivo, puede tardar unos segundos.', '');
+    fetch(APP + '/api/interesados', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, fuente: fuente })
+    }).then(function (r) {
+      return r.json().then(function (d) { if (!r.ok) throw new Error(d.error || 'error'); });
+    }).then(function () {
+      form.reset();
+      mostrar('¡Listo! Te avisamos cuando haya novedades.', 'ok');
+    }).catch(function (err) {
+      var conocido = err && err.message && err.message !== 'error' && err.message !== 'Failed to fetch';
+      mostrar(conocido ? err.message : 'No se pudo enviar. Probá de nuevo en un rato.', 'error');
+    }).finally(function () { boton.disabled = false; });
+  });
+</script>
+</body>
+</html>
